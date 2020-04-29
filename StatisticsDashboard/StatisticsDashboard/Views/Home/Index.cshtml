@@ -1,0 +1,78 @@
+﻿@model Stats
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css" />
+
+<canvas id="cutie" style="width:200px;height:200px"></canvas>
+<canvas id="combustibil" style="width:200px;height:200px;margin-top:50px"></canvas>
+
+<script>
+    var ctx1 = document.getElementById('cutie');
+    var myChart1 = new Chart(ctx1, {
+        type: 'pie',
+        data: {
+            labels: ['Automata', 'Manuala'],
+            datasets: [{
+                label: 'Cutie de viteze',
+                data: [@Model.Automata, @Model.Manuala],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+
+    var ctx2 = document.getElementById('combustibil');
+    var myChart2 = new Chart(ctx2, {
+        type: 'pie',
+        data: {
+            labels: ['Benzina', 'Disel', 'Electrica', 'GPL'],
+            datasets: [{
+                label: 'Combustibil',
+                data: [@Model.Benzina, @Model.Disel, @Model.Electrica, @Model.GPL],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+
+    myChart1.canvas.parentNode.style.height = '528px';
+    myChart1.canvas.parentNode.style.width = '528px';
+    myChart2.canvas.parentNode.style.height = '528px';
+    myChart2.canvas.parentNode.style.width = '528px';
+
+</script>
